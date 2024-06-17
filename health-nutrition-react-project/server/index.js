@@ -4,8 +4,11 @@ import cors from "cors";
 
 const app = express(); 
 
-app.get('/', (req,res) => {
-  res.send("HELLO BOZO")
+app.use(cors());
+app.use(express.json());
+
+app.get("/api/data", (req, res) => {
+  res.json({ message: "this message is from the backend" });
 })
 
 app.listen(PORT, (req, res) => {
