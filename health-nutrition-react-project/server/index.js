@@ -1,6 +1,8 @@
 import express from "express"
-import {PORT} from "./config.js"
+import {PORT, mongoDBURL} from "./config.js"
 import cors from "cors";
+import mongoose from 'mongoose'
+
 
 const app = express(); 
 
@@ -11,6 +13,14 @@ app.get("/api/data", (req, res) => {
   res.json({ message: "this message is from the backend" });
 })
 
-app.listen(PORT, (req, res) => {
-  console.log(`App is Listening on PORT ${PORT}`); 
-})
+
+mongoose
+  .connect(mongoDBURL)
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log("Connected to the Database!"); 
+      console.log(`App is listening on PORT ${PORT}`); 
+    })
+  }).catch((err) => {
+    console.log(err);
+  })
