@@ -14,7 +14,7 @@ app.get("/api/data", (req, res) => {
   res.json({ message: "this message is from the backend" });
 })
 
-app.get("/personal", async (req,res) => {
+app.get("/personal/macro", async (req,res) => {
   try {
     const macros = await macroStats.find({}); 
     return res.status(200).json({
@@ -27,7 +27,7 @@ app.get("/personal", async (req,res) => {
   }
 })
 
-app.post("/personal", async(req, res) => {
+app.post("/personal/macro", async(req, res) => {
   try {
     const {fats, cholesterol, sodium, fiber, sugar, protein} = req.body;
     if(!fats || !cholesterol || !sodium || !fiber || !sugar || !protein) {
@@ -49,7 +49,7 @@ app.post("/personal", async(req, res) => {
   }
 })
 
-app.put("/personal/:id", async (req, res) => {
+app.put("/personal/macro/:id", async (req, res) => {
   try {
     const {id} = req.params; 
     const {fats, cholesterol, sodium, fiber, sugar, protein} = req.body;
@@ -77,7 +77,7 @@ app.put("/personal/:id", async (req, res) => {
   }
 })
 
-app.get("/personal/:id", async (req, res) => {
+app.get("/personal/macro/:id", async (req, res) => {
   try {
     const {id} = req.params; 
     const macro = await macroStats.findById(id); 
@@ -88,7 +88,7 @@ app.get("/personal/:id", async (req, res) => {
   }
 })
 
-app.delete("/personal/:id", async (req,res) => {
+app.delete("/personal/macro/:id", async (req,res) => {
   try {
     const {id} = req.params; 
     const macro = await macroStats.findByIdAndDelete(id); 
