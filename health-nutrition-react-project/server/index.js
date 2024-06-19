@@ -1,11 +1,10 @@
-import express from "express"
+import express, { Router } from "express"
 import {PORT, mongoDBURL} from "./config.js"
 import cors from "cors";
 import mongoose from 'mongoose'
 import {macroStats} from "./models/macroModel.js";
 import router from "./routes/personalMacroRoutes.js";
-
-
+import calorieRouter from "./routes/personalCalorieRoutes.js";
 
 const app = express(); 
 
@@ -17,8 +16,7 @@ app.get("/api/data", (req, res) => {
 })
 
 app.use("/personal/macro", router); 
-
-
+app.use("/personal/calorie", calorieRouter);
 
 mongoose
   .connect(mongoDBURL)
