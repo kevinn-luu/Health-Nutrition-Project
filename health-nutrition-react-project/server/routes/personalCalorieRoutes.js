@@ -29,4 +29,70 @@ calorieRouter.post("/", async (req, res) => {
     }
 })
 
+calorieRouter.get("/", async (req, res) => {
+    try {
+        const calories = await CalorieCounter.find({});
+
+        return res.status(200).json({
+            count: calories.length,
+            data: calories,
+        });
+        
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({ message: error.message });
+    }
+});
+
+calorieRouter.get("/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const calories = await CalorieCounter.findById(id);
+
+        return res.status(200).json(calories);
+
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({ message: error.message });
+    }
+}); 
+
+calorieRouter.put('/:id', async (req, res) => {
+    try {
+    
+        const { id } = req.params;
+
+        const calorieResult = await CalorieCounter.findByIdAndUpdate(id, req.body, { new: true });
+
+        if (!calorieResult) {
+            return res.status(404).json({ message: "Information not found" });
+        }
+
+        return res.status(200).json({ message: "Information successfully updated", calorieResult });
+
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({ message: error.message });
+    }
+});
+
+calorieRouter.delete('/id:', async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const calorieResult = await CalorieCounter.findByIdAndDelete(id);
+
+        if (!calorieResult) {
+            return res.status(404).json({ message: "Information not found"})
+        }
+
+        return res.status(200).json({ message: "Information deleted successfully" })
+
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({ message: error.message });
+    }
+});
+
 export default calorieRouter;
