@@ -2,6 +2,9 @@ import express from "express"
 import {PORT, mongoDBURL} from "./config.js"
 import cors from "cors";
 import mongoose from 'mongoose'
+import {macroStats} from "./models/macroModel.js";
+import router from "./routes/personalMacroRoutes.js";
+
 
 
 const app = express(); 
@@ -12,6 +15,9 @@ app.use(express.json());
 app.get("/api/data", (req, res) => {
   res.json({ message: "this message is from the backend" });
 })
+
+app.use("/personal/macro", router); 
+
 
 
 mongoose
