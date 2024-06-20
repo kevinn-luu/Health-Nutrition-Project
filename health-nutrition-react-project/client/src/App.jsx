@@ -4,7 +4,7 @@ import {Routes, Route} from 'react-router-dom'
 import Home from "./routes/Home.jsx"
 import Personal from "./routes/Personal.jsx";
 import Macro from "./routes/Macro.jsx"
-import CaloriePage from "./routes/CaloriePage.jsx";
+import CaloriePage from "./routes/CalorieTrackerPage.jsx";
 
 function app () {
 
