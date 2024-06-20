@@ -20,8 +20,8 @@ router.get("/", async (req,res) => {
 router.post("/", async(req, res) => {
   try {
     const {fats, cholesterol, sodium, fiber, sugar, protein} = req.body;
-    if(!fats || !cholesterol || !sodium || !fiber || !sugar || !protein) {
-      return res.status(404).json({message: "You're missing a required field"});
+    if(fats < 0 || cholesterol < 0 || sodium < 0|| fiber < 0 || sugar < 0 || protein < 0) {
+      return res.status(404).json({message: "Incorrect Data Input"});
     }
     const newMacro = {
       fats: fats, 
