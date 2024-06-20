@@ -3,10 +3,13 @@ import axios from 'axios'
 import {useState, useEffect} from 'react'
 import '../styles/macroPage.css'
 import Stats from "../components/macros/Stats.jsx"
+import MacroForm from '../components/macros/MacroForm.jsx'
 
 const Macro = () => {
   const [loading, setLoading] = React.useState(false)
   const [macros, setMacros] = React.useState([])
+
+
 
   React.useEffect(() => {
     setLoading(true);
@@ -27,7 +30,10 @@ const Macro = () => {
       {loading ? (
         <p>DEEEUIGH</p>
       ) : (
-        <Stats macros={macros} />
+        <div>
+          <Stats macros={macros} />
+          <MacroForm />
+        </div>
       )}
 
     </div>

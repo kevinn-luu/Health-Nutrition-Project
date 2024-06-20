@@ -77,7 +77,7 @@ calorieRouter.put('/:id', async (req, res) => {
     }
 });
 
-calorieRouter.delete('/id:', async (req, res) => {
+calorieRouter.delete('/:id', async (req, res) => {
     try {
         const { id } = req.params;
 
