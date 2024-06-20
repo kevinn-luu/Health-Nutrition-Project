@@ -4,6 +4,8 @@ import axios from "axios";
 
 const CalorieForm = () => {
 
+    const userId = '60b6b3f96f1b2c001a3b8b0d';
+
     const [userInput, setUserInput] = useState({
         date: "",
         totalcalories: "",
@@ -25,14 +27,29 @@ const CalorieForm = () => {
     function handleSubmit (event) {
        event.preventDefault();
        console.log(userInput);
-       axios
-        .post('http://localhost:5555/personal/calorie', userInput)
+
+       const formData = {
+        userId: "60b6b3f96f1b2c001a3b8b0d", 
+        weekStart: new Date(), 
+        dailyCalories: [{
+            date: userInput.date,
+            totalcalories: userInput.totalcalories,
+            meals: [{
+                mealType: userInput.mealType,
+                calories: userInput.mealCalories,
+                description: userInput.mealDescription
+            }]
+        }]
+    };
+
+    axios.post('http://localhost:5555/personal/calorie', formData)
         .then((res) => {
-            console.log(res);
+            console.log(res.data);
             window.location.reload();
         })
-        .catch ((error) => {
+        .catch((error) => {
             console.log(error.message);
+            console.log("deuigh");
         })
 
 
