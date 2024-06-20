@@ -1,6 +1,24 @@
+import axios from "axios";
 import React from "react";
+import { useState } from "react"
 
 export default function Stats(props) {
+
+
+
+  function handleClick(input) {
+
+    axios
+      .delete(`http://localhost:5555/personal/macro/${input}`)
+      .then((res) => {
+        console.log('User deleted successfully:', res.data);
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
   return (
     <div>
       <h1>YOUR MACROS!</h1>
@@ -14,6 +32,7 @@ export default function Stats(props) {
             <p>sugar: {macro.sugar}g</p>
             <p>protein: {macro.protein}g</p>
             <p>time: {macro.updatedAt}</p>
+            <button onClick={() => handleClick(macro._id)}>Delete Macro Stat</button>
           </div>
         ))
       ) : (

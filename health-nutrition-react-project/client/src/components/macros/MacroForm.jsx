@@ -35,6 +35,7 @@ const MacroForm = () => {
       .post('http://localhost:5555/personal/macro', formData)
       .then((res) => {
         console.log(res);
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -48,7 +49,7 @@ const MacroForm = () => {
       <label>Fats: 
         <input
           type="number"
-          placeholder='deeeuigh'
+          placeholder='fats'
           name="fats"
           onChange={handleChange}
           value={formData.fats}
@@ -57,7 +58,7 @@ const MacroForm = () => {
       <label>Cholesterol: 
         <input
           type="number"
-          placeholder='deeeuigh'
+          placeholder='cholesterol'
           name="cholesterol"
           onChange={handleChange}
           value={formData.cholesterol}
@@ -66,7 +67,7 @@ const MacroForm = () => {
       <label>Sodium: 
         <input
           type="number"
-          placeholder='deeeuigh'
+          placeholder='sodium'
           name="sodium"
           onChange={handleChange}
           value={formData.sodium}
@@ -75,7 +76,7 @@ const MacroForm = () => {
       <label>Fiber: 
         <input
           type="number"
-          placeholder='deeeuigh'
+          placeholder='fiber'
           name="fiber"
           onChange={handleChange}
           value={formData.fiber}
@@ -84,7 +85,7 @@ const MacroForm = () => {
       <label>Sugar: 
         <input
           type="number"
-          placeholder='deeeuigh'
+          placeholder='sugar'
           name="sugar"
           onChange={handleChange}
           value={formData.sugar}
@@ -93,7 +94,7 @@ const MacroForm = () => {
       <label>Protein: 
         <input
           type="number"
-          placeholder='deeeuigh'
+          placeholder='protein'
           name="protein"
           onChange={handleChange}
           value={formData.protein}
