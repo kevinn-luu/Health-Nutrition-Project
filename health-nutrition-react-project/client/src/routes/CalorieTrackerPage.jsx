@@ -3,7 +3,7 @@ import api from "../services/api.js";
 import "../styles/caloriePage.css";
 
 
-function CaloriePage () {
+function CalorieTrackerPage () {
     const [calories, setCalories] = useState([]);
 
     useEffect(() => {
@@ -26,6 +26,6 @@ function CaloriePage () {
     )
 };
 
-export default CaloriePage;
+export default CalorieTrackerPage;
    
         
