@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import api from "../services/api.js";
 
 
-function CaloriePage () {
+function CalorieTrackerPage () {
     const [calories, setCalories] = useState([]);
 
     useEffect(() => {
@@ -25,6 +25,4 @@ function CaloriePage () {
     )
 };
 
-export default CaloriePage;
-   
-        
+export default CalorieTrackerPage;
