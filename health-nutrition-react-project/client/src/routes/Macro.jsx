@@ -25,12 +25,16 @@ const Macro = () => {
       {loading ? (
         <p>DEEEUIGH</p>
       ) : (
-        <div>
+        <div className='macro--container'>
           {macros.length > 0 ? (
             macros.map((macro) => (
               <div key={macro._id}>
-                <p>sodium: {macro.sodium}</p>
-                <p>fats: {macro.fats}</p>
+                <p>fats: {macro.fats}g</p>
+                <p>cholesterol: {macro.cholesterol}g</p>
+                <p>sodium: {macro.sodium}g</p>
+                <p>fiber: {macro.fiber}g</p>
+                <p>sugar: {macro.sugar}g</p>
+                <p>protein: {macro.protein}g</p>
               </div>
             ))
           ) : (
