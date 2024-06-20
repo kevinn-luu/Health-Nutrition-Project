@@ -19,15 +19,7 @@ function CaloriePage () {
     return(
         <div>
             <h1>Calorie Information</h1>
-            <ul>
-                {calories.map(calorie => (
-                    <li key={calorie._id}>
-                        <h2>
-                            Week Start :{new Date(calorie.weekStart.toLocalDateString())}
-                        </h2>
-                    </li>
-                ))}
-            </ul>
+            <p>DEEEUEIGH DOOOOSH</p>
         </div>
     )
 };
