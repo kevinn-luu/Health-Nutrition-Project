@@ -4,6 +4,7 @@ import {Routes, Route} from 'react-router-dom'
 import Home from "./routes/Home.jsx"
 import Personal from "./routes/Personal.jsx";
 import Macro from "./routes/Macro.jsx"
+import CaloriePage from "./routes/CaloriePage.jsx";
 
 function app () {
 
@@ -13,6 +14,7 @@ function app () {
         <Route path="/" element={<Home />} />
         <Route path="/personal" element={<Personal />} />
         <Route path="/personal/macro" element={<Macro />} />
+        <Route path="/personal/calorie" element={<CaloriePage />} />
       </Routes>
 
     </div>
