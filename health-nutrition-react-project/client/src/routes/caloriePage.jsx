@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import api from "./services/api.js";
+import api from "../services/api.js";
 
 function CaloriePage () {
     const [calories, setCalories] = useState([]);
