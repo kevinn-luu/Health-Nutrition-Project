@@ -1,3 +1,48 @@
-h1 {
-    color: red;
+#page-title {
+    color: darkblue;
+}
+
+.form-container {
+   max-width: 500px;
+   max-width: auto;
+   padding: 20px;
+   border: 2px solid black;
+   border-radius: 20px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   background-color: white;
+}
+
+.calorie-form div {
+    margin-bottom: 15px;
+}
+
+.calorie-form label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.calorie-form input, 
+.calorie-form select, 
+.calorie-form button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: 1px solid darkblue;
+    border-radius: 5px;
+}
+
+.calorie-form button {
+    background-color: darkgray;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+}
+
+.calorie-form button:hover {
+    background-color: lightgray;
 }

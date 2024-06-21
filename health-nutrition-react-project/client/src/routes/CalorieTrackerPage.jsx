@@ -25,7 +25,7 @@ const CalorieTrackerPage = () => {
 
     return(
         <div>
-            <h1>Calorie Information</h1>
+            <h1 id="page-title">Calorie Information</h1>
             <CalorieForm />
         </div>
     )

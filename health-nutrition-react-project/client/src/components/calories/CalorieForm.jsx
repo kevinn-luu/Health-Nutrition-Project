@@ -14,6 +14,8 @@ const CalorieForm = () => {
         mealDescription: "",
     });
 
+    const [entries, setEntries] = useState([]);
+
     function handleChange (event) {
         setUserInput(prevUserInput => {
             const {name, value} = event.target;
@@ -45,19 +47,26 @@ const CalorieForm = () => {
     axios.post('http://localhost:5555/personal/calorie', formData)
         .then((res) => {
             console.log(res.data);
-            window.location.reload();
+            setEntries((prevEntries) => [...prevEntries, userInput]);
+            setUserInput({
+                date: "",
+                totalcalories: "",
+                mealType: "",
+                mealCalories: "",
+                mealDescription: "",
+            });
+            
         })
         .catch((error) => {
             console.log(error.message);
-            console.log("deuigh");
         })
 
 
     };
 
     return (
-        
-            <form onSubmit={handleSubmit}>
+        <div class="form-container">
+            <form onSubmit={handleSubmit} class="calorie-form">
                 <div>
                     <label htmlFor="date">Date:</label>
                     <input
@@ -119,6 +128,20 @@ const CalorieForm = () => {
                 </div>
                 <button type="submit">Submit</button>
             </form>
+
+            <div class="entries">
+                <h2>Calorie Entries</h2>
+                {entries.map((entry, index) => (
+                    <div key={index} class="entries">
+                        <p>Date: {entry.date}</p>
+                        <p>Total Calories: {entry.totalcalories}</p>
+                        <p>Meal Type: {entry.mealType}</p>
+                        <p>Meal Calories: {entry.mealCalories}</p>
+                        <p>Meal Description: {entry.mealDescription}</p>
+                    </div>                   
+                ))}
+            </div>
+        </div>
         
     );
 ;}
