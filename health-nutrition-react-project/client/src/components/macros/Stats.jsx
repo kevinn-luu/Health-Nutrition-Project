@@ -1,10 +1,15 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react"
+import MacroEditForm from "./MarcoEditForm";
 
 export default function Stats(props) {
 
+  const [toggle, setToggle] = useState(false)
 
+  function toToggle() {
+    setToggle(prevToggle => !prevToggle);
+  }
 
   function handleClick(input) {
 
@@ -33,6 +38,10 @@ export default function Stats(props) {
             <p>protein: {macro.protein}g</p>
             <p>time: {macro.updatedAt}</p>
             <button onClick={() => handleClick(macro._id)}>Delete Macro Stat</button>
+            <br></br>
+            <br></br>
+            <button onClick={toToggle}>Edit Entry</button>
+            {toggle && <MacroEditForm id={macro._id} />}
           </div>
         ))
       ) : (
