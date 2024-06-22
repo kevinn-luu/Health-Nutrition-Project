@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import CalorieEntry from "./CalorieEntry.jsx";
 import axios from "axios";
+import CalorieEntries from "./CalorieEntries.jsx";
 
-const CalorieForm = () => {
+const CalorieForm = ({ updateEntries }) => {
 
     const userId = '60b6b3f96f1b2c001a3b8b0d';
 
@@ -55,6 +55,7 @@ const CalorieForm = () => {
                 mealCalories: "",
                 mealDescription: "",
             });
+            updateEntries();
             
         })
         .catch((error) => {
@@ -65,84 +66,73 @@ const CalorieForm = () => {
     };
 
     return (
-        <div class="form-container">
-            <form onSubmit={handleSubmit} class="calorie-form">
-                <div>
-                    <label htmlFor="date">Date:</label>
-                    <input
-                        type="date"
-                        id="date"
-                        name="date"
-                        value={userInput.date}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="totalcalories">Total Calories:</label>
-                    <input
-                        type="number"
-                        id="totalcalories"
-                        name="totalcalories"
-                        value={userInput.totalcalories}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="mealType">Meal Type:</label>
-                    <select
-                        id="mealType"
-                        name="mealType"
-                        value={userInput.mealType}
-                        onChange={handleChange}
-                        required
-                    >
-                        <option value="">Select Meal Type</option>
-                        <option value="breakfast">Breakfast</option>
-                        <option value="lunch">Lunch</option>
-                        <option value="dinner">Dinner</option>
-                        <option value="snack">Snack</option>
-                    </select>
-                </div>
-                <div>
-                    <label htmlFor="mealCalories">Meal Calories:</label>
-                    <input 
-                        type="number"
-                        id="mealCalories"
-                        name="mealCalories"
-                        value={userInput.mealCalories}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="mealDescription">Meal Description</label>
-                    <input 
-                        type="text"
-                        id="mealDescription"
-                        name="mealDescription"
-                        value={userInput.mealDescription}
-                        onChange={handleChange}
-                    />
-                </div>
+        <div className="calorie-container">
+            <div className="form-container">
+                <form onSubmit={handleSubmit} className="calorie-form">
+                    <div>
+                        <label htmlFor="date">Date:</label>
+                        <input
+                            type="date"
+                            id="date"
+                            name="date"
+                            value={userInput.date}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="totalcalories">Total Calories:</label>
+                        <input
+                            type="number"
+                            id="totalcalories"
+                            name="totalcalories"
+                            value={userInput.totalcalories}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="mealType">Meal Type:</label>
+                        <select
+                            id="mealType"
+                            name="mealType"
+                            value={userInput.mealType}
+                            onChange={handleChange}
+                            required
+                        >
+                            <option value="">Select Meal Type</option>
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                            <option value="snack">Snack</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label htmlFor="mealCalories">Meal Calories:</label>
+                        <input 
+                            type="number"
+                            id="mealCalories"
+                            name="mealCalories"
+                            value={userInput.mealCalories}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="mealDescription">Meal Description</label>
+                        <input 
+                            type="text"
+                            id="mealDescription"
+                            name="mealDescription"
+                            value={userInput.mealDescription}
+                            onChange={handleChange}
+                        />
+                    </div>
                 <button type="submit">Submit</button>
             </form>
-
-            <div class="entries">
-                <h2>Calorie Entries</h2>
-                {entries.map((entry, index) => (
-                    <div key={index} class="entries">
-                        <p>Date: {entry.date}</p>
-                        <p>Total Calories: {entry.totalcalories}</p>
-                        <p>Meal Type: {entry.mealType}</p>
-                        <p>Meal Calories: {entry.mealCalories}</p>
-                        <p>Meal Description: {entry.mealDescription}</p>
-                    </div>                   
-                ))}
-            </div>
         </div>
-        
+        <CalorieEntries />
+    </div>
     );
 ;}
 
