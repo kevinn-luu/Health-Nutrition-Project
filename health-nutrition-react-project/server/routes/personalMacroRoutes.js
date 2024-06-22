@@ -43,7 +43,7 @@ router.put("/:id", async (req, res) => {
   try {
     const {id} = req.params; 
     const {fats, cholesterol, sodium, fiber, sugar, protein} = req.body;
-    if(!fats || !cholesterol || !sodium || !fiber || !sugar || !protein) {
+    if(fats < 0 || cholesterol < 0 || sodium < 0 || fiber < 0 || sugar < 0 || protein < 0) {
       return res.status(404).json({message: "You're missing a required field"});
     }
     const newMacro = {
