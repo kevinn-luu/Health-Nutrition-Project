@@ -10,6 +10,7 @@ const CalorieEntries = () => {
         axios
             .get('http://localhost:5555/personal/calorie')
             .then((res) => {
+                console.log("Response :", JSON.stringify(res.data.data, null, 2));
                 setEntries(res.data.data);
                 setLoading(false);
             })
@@ -18,23 +19,35 @@ const CalorieEntries = () => {
             })
         }, [])
         
-    return (
-        <div className="calorie-entries">
-            <h2>Calorie Entries</h2>
-            {entries.length > 0 ? (
-                entries.map((entry) => (
-                    <div key={entry._id}>
-                        <p>Date: {entry.date}</p>
-                        <p>Total Calories: {entry.totalcalories}</p>
-                        <p>Meal Type: {entry.mealType}</p>
-                        <p>Meal Calories: {entry.mealCalories}</p>
-                        <p>Meal Description: {entry.mealDescription}</p>
-                    </div>
-            ))) : (
-                <p>No entries available</p>
-            )}
-        </div>
-    );
+        return (
+            <div className="calorie-entries">
+                <h2>Calorie Entries</h2>
+                {loading ? (
+                    <h1>Loading...</h1>
+                ) : (
+                    entries.length > 0 ? (
+                        entries.map((entry) => (
+                            entry.dailyCalories.map((dailyCalorie) => (
+                                <div key={dailyCalorie._id}>
+                                    <p>Date: {new Date(dailyCalorie.date).toLocaleDateString()}</p>
+                                    <p>Total Calories: {dailyCalorie.totalcalories}</p>
+                                    {dailyCalorie.meals.map((meal) => (
+                                        <div key={meal._id}>
+                                            <p>Meal Type: {meal.mealType}</p>
+                                            <p>Meal Calories: {meal.calories}</p>
+                                            <p>Meal Description: {meal.description}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            ))
+                        ))
+                    ) : (
+                        <p>No entries available</p>
+                    )
+                )}
+            </div>
+        );
+        
 };
 
 export default CalorieEntries;
