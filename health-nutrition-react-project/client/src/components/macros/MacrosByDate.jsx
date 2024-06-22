@@ -8,6 +8,10 @@ const MacrosByDate = () => {
   const [macros, setMacros] = useState([]); 
   const [currentMacro, setCurrentMacro] = useState([])
 
+  function handleClick(input) {
+    setCurrentMacro(input);
+  }
+
 
   useEffect(() => {
     setLoading(true);
@@ -15,7 +19,6 @@ const MacrosByDate = () => {
       .get('http://localhost:5555/personal/macro')
       .then((res) => {
         setMacros(res.data.data);
-        setCurrentMacro(res.data.data[0]);
         console.log(res.data.data);
         setLoading(false);
       })
@@ -32,14 +35,20 @@ const MacrosByDate = () => {
           {macros.length > 0 ? (<div>
             {macros.map((macro) => {
               return <div key={macro._id}>
-                      <button>{macro.updatedAt.substr(0, 10)}</button>
+                      <button onClick={() => handleClick(macro)}>{macro.updatedAt.substr(0, 10)}</button>
                     </div>
             })}
             </div>) : (<p>No Macros Available</p>)}
         </div>
       )}
       <div className="macro-get-by-id-container">
-        <h1>test</h1>
+        <p>fats: {currentMacro.fats}</p>
+        <p>cholesterol: {currentMacro.cholesterol}</p>
+        <p>sodium: {currentMacro.sodium}</p>
+        <p>fiber: {currentMacro.fiber}</p>
+        <p>sugar: {currentMacro.sugar}</p>
+        <p>protein: {currentMacro.protein}</p>
+        <p>time: {currentMacro.updatedAt}</p>
       </div>
 
 
