@@ -2,6 +2,8 @@ import axios from "axios";
 import React from "react";
 import { useState } from "react"
 import MacroEditForm from "./MarcoEditForm";
+import {Link} from "react-router-dom"
+import MacrosByDate from "./MacrosByDate";
 
 export default function Stats(props) {
 
@@ -10,6 +12,7 @@ export default function Stats(props) {
   function toToggle() {
     setToggle(prevToggle => !prevToggle);
   }
+
 
   function handleClick(input) {
 
@@ -27,6 +30,7 @@ export default function Stats(props) {
   return (
     <div>
       <h1>YOUR MACROS!</h1>
+      <button><Link to="/personal/macro/dates">See Macros By Date</Link></button>
       {props.macros.length > 0 ? (
         props.macros.map((macro) => (
           <div key={macro._id} className='macro--container'>
@@ -36,12 +40,12 @@ export default function Stats(props) {
             <p>fiber: {macro.fiber}g</p>
             <p>sugar: {macro.sugar}g</p>
             <p>protein: {macro.protein}g</p>
-            <p>time: {macro.updatedAt}</p>
-            <button onClick={() => handleClick(macro._id)}>Delete Macro Stat</button>
-            <br></br>
-            <br></br>
+            <p>date: {macro.updatedAt.substr(0, 10)}</p>
             <button onClick={toToggle}>Edit Entry</button>
             {toggle && <MacroEditForm id={macro._id} />}
+            <br></br>
+            <br></br>
+            <button onClick={() => handleClick(macro._id)}>Delete Macro Stat</button>
           </div>
         ))
       ) : (
