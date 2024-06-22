@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import api from "../services/api.js";
 import "../styles/caloriePage.css";
 import CalorieForm from "../components/calories/CalorieForm.jsx";
+import "../styles/calorieEntries.css";
 import axios from "axios";
 
 
