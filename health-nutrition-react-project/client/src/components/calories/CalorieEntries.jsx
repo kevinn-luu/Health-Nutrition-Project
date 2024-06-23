@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "../../styles/calorieEntries.css"
 
 
 const CalorieEntries = () => {
@@ -53,7 +54,7 @@ const CalorieEntries = () => {
                                             <p>Meal Description: {meal.description}</p>
                                         </div>
                                     ))}
-                                    <button onClick={() => handleClick(dailyCalorie._id)}>Delete entry</button>
+                                    <button onClick={() => handleClick(dailyCalorie._id)} className="delete-entry-button">Delete entry</button>
                                 </div>
                             ))
                         ))
