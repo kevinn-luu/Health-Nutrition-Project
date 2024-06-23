@@ -26,8 +26,13 @@ const CalorieTrackerPage = () => {
 
     return(
         <div>
-            <h1 id="page-title">Calorie Information</h1>
-            <CalorieForm />
+            <div>
+              <h2>Welcome User</h2>
+            </div>
+            <div>
+              <CalorieForm />
+            </div>
+            
         </div>
     )
 };
