@@ -7,3 +7,61 @@
   border: 5px solid; 
   margin: 8px;
 }
+
+.macro--form {
+  border: 2px solid black;
+  display: flexbox;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  max-width: 50%;
+  text-align: center;
+  margin: auto;
+  background-image: linear-gradient(to bottom right, skyblue , lightgray);
+}
+
+.macro-form-title{
+  text-align: center;
+}
+
+.macro-form-labels-top-half{
+  justify-content: center;
+  align-items: center;
+  display: flexbox;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.macro-form-labels-bot-half{
+  justify-content: center;
+  align-items: center;
+  display: flexbox;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.form-label {
+  margin: 10px
+}
+
+.macro--form button {
+  margin-bottom: 10px;
+  width: 200px;
+  height: 30px;
+  background-color: darkgray;
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+.macro--form button:hover {
+  background-color: lightgray;
+}
+
+.macro-display {
+  display: grid;
+  grid-template-columns: auto auto auto
+}

@@ -28,9 +28,7 @@ export default function Stats(props) {
   }
 
   return (
-    <div>
-      <h1>YOUR MACROS!</h1>
-      <button><Link to="/personal/macro/dates">See Macros By Date</Link></button>
+    <div className='macro-display'>
       {props.macros.length > 0 ? (
         props.macros.map((macro) => (
           <div key={macro._id} className='macro--container'>

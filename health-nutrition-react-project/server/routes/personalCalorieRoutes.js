@@ -13,10 +13,15 @@ calorieRouter.post("/", async (req, res) => {
             return res.status(400).json({ message: "Please fill out all fields "});
         }
 
+        const dailyCaloriesWithoutDefaultDate = dailyCalories.map(calorie =>({
+            totalcalories: calorie.totalcalories,
+            meals: calorie.meals
+        }));
+
         const calorieCount = new CalorieCounter({
             userId,
             weekStart,
-            dailyCalories,
+            dailyCalories: dailyCaloriesWithoutDefaultDate,
         });
 
         await calorieCount.save();
@@ -80,14 +85,27 @@ calorieRouter.put('/:id', async (req, res) => {
 calorieRouter.delete('/:id', async (req, res) => {
     try {
         const { id } = req.params;
+        console.log(`Attemping to delete entry with ID ${id}`);
 
-        const calorieResult = await CalorieCounter.findByIdAndDelete(id);
+        const calorieResult =  await CalorieCounter.updateOne(
+            { "dailyCalories._id": id },
+            { $pull: { dailyCalories: { _id: id } } }
+        )
 
-        if (!calorieResult) {
-            return res.status(404).json({ message: "Information not found"})
+        if (calorieResult.n === 0) {
+            console.log(`no entry found with ID ${id}`);
+            return res.status(404).json({ message: "Information not found"});
         }
 
-        return res.status(200).json({ message: "Information deleted successfully" })
+        const emptyDocumentCheck = await CalorieCounter.findOne({ "dailyCalories": { $size: 0 } });
+
+        if (emptyDocumentCheck) {
+            await CalorieCounter.deleteOne({ _id: emptyDocumentCheck._id });
+            console.log(`Deleted empty document with id ${emptyDocumentCheck._id}`);
+        }
+
+        console.log(`Successfully deleted entry with ID ${id}`);
+        return res.status(200).json({ message: "Information deleted successfully" });
 
     } catch (error) {
         console.log(error.message);
