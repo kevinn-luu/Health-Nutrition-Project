@@ -1,0 +1,22 @@
+.calorie-banner {
+    position: relative;
+    background-image: url("../../public/images/calorie-banner-blue.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 15px 20px;
+}
+
+/* .input[type="number"] {
+    width: 100%;
+    max-width: 200px;
+    height: 25px;
+    padding: 5px;
+    font-size: 12px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: white;
+    border: 4px solid black;
+    outline: none;
+    transform: all 0.3s ease;
+    box-shadow: 4px 4px 0 black;
+} */
+
