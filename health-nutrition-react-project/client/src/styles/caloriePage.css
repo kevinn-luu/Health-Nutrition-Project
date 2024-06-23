@@ -18,7 +18,8 @@
    border-radius: 20px;
    box-shadow: 4px 4px var(--main-color);
    max-width: 300px;
-   background: linear-gradient(to bottom right, skyblue, lightgray);
+   /* background: linear-gradient(to bottom right, skyblue, lightgray); */
+   background-color: lightblue;
 
 
 }
@@ -73,10 +74,8 @@
 .entries-container {
     flex: 1;
     padding: 10px;
-    border: 2px solid black;
-    border-radius: 20px;
     margin-left: 20px;
+    max-height: 300px;
     overflow-y: auto;
-    height: 300px;
 }
 
