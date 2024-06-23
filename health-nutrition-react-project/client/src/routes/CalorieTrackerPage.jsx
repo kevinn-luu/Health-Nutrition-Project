@@ -4,6 +4,7 @@ import "../styles/caloriePage.css";
 import CalorieForm from "../components/calories/CalorieForm.jsx";
 import "../styles/calorieEntries.css";
 import axios from "axios";
+import CalorieBanner from "../components/calories/CalorieBanner.jsx";
 
 
 
@@ -27,7 +28,7 @@ const CalorieTrackerPage = () => {
     return(
         <div>
             <div>
-              <h2>Welcome User</h2>
+              <CalorieBanner />
             </div>
             <div>
               <CalorieForm />
