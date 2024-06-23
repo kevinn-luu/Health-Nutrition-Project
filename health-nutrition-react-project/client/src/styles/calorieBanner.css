@@ -1,6 +1,6 @@
 .calorie-banner {
     position: relative;
-    background-image: url("../../public/images/calorie-banner-blue.jpg");
+    background-image: url("/images/calorie-banner-blue.jpg");
     background-size: cover;
     background-position: center;
     padding: 15px 20px;

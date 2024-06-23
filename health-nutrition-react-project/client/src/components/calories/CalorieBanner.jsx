@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../../styles/setGoal.css";
+import "../../styles/calorieBanner.css";
 import { Link } from "react-router-dom";
 
-const SetGoal = () => {
+const CalorieBanner = () => {
     const [goal, setGoal] = useState('');
 
     const handleChange = (event) => {
@@ -20,5 +20,5 @@ const SetGoal = () => {
     )
 };
 
-export default SetGoal
+export default CalorieBanner;
 
