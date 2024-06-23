@@ -2,16 +2,21 @@
     color: darkblue;
 }
 
-.form-container {
-   max-width: 500px;
-   max-height: 500px;
-   max-width: auto;
+.calorie-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.calorie-form-container {
+   flex: 1; 
    padding: 20px;
    border: 2px solid black;
    border-radius: 20px;
    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
    background-color: white;
-   flex: 1;
+   max-width: 300px;
+
 }
 
 .calorie-form div {
@@ -49,22 +54,12 @@
     background-color: lightgray;
 }
 
-.calorie-container {
-    display: flex;
-    justify-content: center;
-}
-
-.content-wrapper {
-    display: flex;
-    justify-content: space-between;
-    width: 20%;
-    padding: 20px;
-}
-
 .entries-container {
     flex: 1;
-    padding: 20px;
+    padding: 10px;
     border: 2px solid black;
     border-radius: 20px;
-    margin-right: 20px;
+    margin-left: 20px;
+    overflow-y: auto;
+    height: 300px;
 }
