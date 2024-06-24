@@ -1,3 +1,6 @@
+body{
+    background-color: white;
+}
 
 .calorie-container {
     display: flex;
@@ -9,14 +12,13 @@
    flex: 1; 
    padding: 20px;
    border: 2px solid black;
-   --main-color: black;
+   --main-color: #69818D;
    --font-color-sub: #666;
    --font-color: #323232;
    border-radius: 20px;
    max-width: 300px;
    /* background: linear-gradient(to bottom right, skyblue, lightgray); */
-   background-color: beige;
-
+   background-color: white;
 
 }
 
@@ -74,4 +76,5 @@
     max-height: 300px;
     overflow-y: auto;
 }
+
 
