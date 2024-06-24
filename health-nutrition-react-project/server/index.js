@@ -5,18 +5,16 @@ import mongoose from 'mongoose'
 import {macroStats} from "./models/macroModel.js";
 import router from "./routes/personalMacroRoutes.js";
 import calorieRouter from "./routes/personalCalorieRoutes.js";
+import calorieGoalRouter from "./routes/personalCalorieGoalRoutes.js";
 
 const app = express(); 
 
 app.use(cors());
 app.use(express.json());
 
-app.get("/api/data", (req, res) => {
-  res.json({ message: "this message is from the backend" });
-})
-
 app.use("/personal/macro", router); 
 app.use("/personal/calorie", calorieRouter);
+app.use("/personal/calorie-goals", calorieGoalRouter);
 
 mongoose
   .connect(mongoDBURL)
