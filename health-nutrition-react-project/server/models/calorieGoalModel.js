@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
+const isPositiveNumber = (value) => {
+    return value > 0;
+}
+
 const calorieGoalSchema = new Schema
 ({
     userId: {
@@ -18,7 +22,7 @@ const calorieGoalSchema = new Schema
         type: Number,
         required: true,
         validate: {
-            validator: Number.isPositive,
+            validator: isPositiveNumber,
             message: '{VALUE} is not a positive number'
         }
     }
