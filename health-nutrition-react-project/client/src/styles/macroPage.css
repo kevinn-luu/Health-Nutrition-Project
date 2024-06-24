@@ -138,3 +138,10 @@
   border: 5px solid beige;
   box-shadow: 2px 2px brown;
 }
+
+.macro-date-buttons button:hover {
+  cursor: pointer;
+  background-color: beige;
+  border: 5px solid brown; 
+  box-shadow: 2px 2px beige;
+}
