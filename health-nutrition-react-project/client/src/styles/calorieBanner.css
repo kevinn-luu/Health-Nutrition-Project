@@ -1,22 +1,58 @@
 .calorie-banner {
-    position: relative;
-    background-image: url("/images/calorie-banner-blue.jpg");
-    background-size: cover;
-    background-position: center;
-    padding: 15px 20px;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle farthest-side at 0% 50%,
+        #282828 23.5%,
+        rgba(255, 170, 0, 0) 0
+    )
+    21px 30px,
+    radial-gradient(
+        circle farthest-side at 0% 50%,
+        #2c3529 24%,
+        rgba(240, 160, 17, 0) 0
+    )
+    19px 30px,
+    linear-gradient(
+        #282828 14%,
+        rgba(240, 166, 17, 0) 0,
+        rgba(240, 166, 17, 0) 85%,
+        #282828 0
+    )
+    0 0,
+    linear-gradient(
+        150deg,
+        #282828 24%,
+        #2c3529 0,
+        #2c3529 26%,
+        rgba(240, 166, 17, 0) 0,
+        rgba(240, 166, 17, 0) 74%,
+        #2c3529 0,
+        #2c3529 76%,
+        #282828 0
+    )
+    0 0,
+    linear-gradient(
+        30deg,
+        #282828 24%,
+        #2c3539 0,
+        #2c3539 26%,
+        rgba(240, 166, 17, 0) 0,
+        rgba(240, 166, 17, 0) 74%,
+        #2c3539 0,
+        #2c3539 76%,
+        #282828 0
+    )
+    0 0,
+    linear-gradient(90deg, #2c3539 2%, #282828 0, #282828 98%, #2c3539 0%) 0 0
+    #282828;
+    background-size: 40px 60px;
 }
 
-/* .input[type="number"] {
-    width: 100%;
-    max-width: 200px;
-    height: 25px;
-    padding: 5px;
-    font-size: 12px;
-    font-family: 'Courier New', Courier, monospace;
-    background-color: white;
-    border: 4px solid black;
-    outline: none;
-    transform: all 0.3s ease;
-    box-shadow: 4px 4px 0 black;
-} */
+#banner-title {
+    color: white;
+}
 
+.calorie-banner-content {
+     padding: 10px;
+}
