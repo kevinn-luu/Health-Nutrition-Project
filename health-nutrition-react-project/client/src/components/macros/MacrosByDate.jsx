@@ -1,6 +1,7 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 
 const MacrosByDate = () => {
@@ -31,8 +32,12 @@ const MacrosByDate = () => {
     <div>
       {loading? (<h1>DEEEEUIGH</h1>) : (
         <div>
-          <h2>Pick a date to see your macros</h2>
-          {macros.length > 0 ? (<div>
+          <navbar className='macro-date-nav'>
+            <h2>Pick a date to see your macros</h2>
+            <button><Link to="/personal/macro">Back to Macros</Link></button>
+            <button><Link to="/personal">Back to Personal</Link></button>
+          </navbar>
+          {macros.length > 0 ? (<div className='macro-date-buttons'>
             {macros.map((macro) => {
               return <div key={macro._id}>
                       <button onClick={() => handleClick(macro)}>{macro.updatedAt.substr(0, 10)}</button>
@@ -41,7 +46,7 @@ const MacrosByDate = () => {
             </div>) : (<p>No Macros Available</p>)}
         </div>
       )}
-      <div className="macro-get-by-id-container">
+      <div className="macro--container">
         <p>fats: {currentMacro.fats}</p>
         <p>cholesterol: {currentMacro.cholesterol}</p>
         <p>sodium: {currentMacro.sodium}</p>

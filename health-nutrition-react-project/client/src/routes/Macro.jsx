@@ -37,6 +37,7 @@ const Macro = () => {
           <navbar className="macro-nav">
             <h1>YOUR MACROS!</h1>
             <button><Link className='dates-link' to="/personal/macro/dates">See Macros By Date</Link></button>
+            <button><Link to="/personal">Back to Personal</Link></button>
           </navbar>
           <section>
             <MacroForm />
