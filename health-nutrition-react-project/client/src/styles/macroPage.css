@@ -1,6 +1,13 @@
 .macro--container {
-  border: 5px solid; 
+  border: 5px solid brown; 
   margin: 8px;
+  background-color: beige;
+  border-radius: 10px;
+
+}
+
+.macro--container p {
+  padding-left: 10px;
 }
 
 .macro-get-by-id-container {
@@ -63,7 +70,7 @@
 
 .macro-display {
   display: grid;
-  grid-template-columns: auto auto auto
+  grid-template-columns: auto auto auto;
 }
 
 .macro-nav {
@@ -91,4 +98,43 @@
 
 .dates-link {
   color: black;
+}
+
+.macro-date-nav {
+  display: flex;
+  align-items: center;
+  background-color: lightgray;
+  margin-bottom: 10px;
+  box-shadow: 5px 5px 5px gray;
+}
+
+.macro-date-nav button {
+  background-color: skyblue;
+  color: black;
+  margin-right: 10px;
+  border-radius: 5px;
+  width: 150px;
+  height: 30px;
+  border: 1px solid white;
+}
+
+.macro-date-nav h2 {
+  padding-left: 15px;
+  margin-right: auto;
+}
+
+.macro-date-buttons {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px;
+  justify-content: center;
+  
+}
+
+.macro-date-buttons button {
+  width: 200px;
+  height: 75px;
+  background-color: brown;
+  border: 5px solid beige;
+  box-shadow: 2px 2px brown;
 }
