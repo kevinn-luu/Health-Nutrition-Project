@@ -1,0 +1,7 @@
+.goal-container {
+    display: flex;
+}
+
+.current-goal-container {
+    margin-left: auto;
+}
