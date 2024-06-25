@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import api from "./services/api";
 import {Routes, Route} from 'react-router-dom'
 import Home from "./routes/Home.jsx"
 import Personal from "./routes/Personal.jsx";
