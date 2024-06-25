@@ -36,8 +36,7 @@ const CalorieTrackerPage = () => {
             </div>
             <div>
               <CalorieForm />
-            </div>
-            
+            </div>        
         </div>
     )
 };

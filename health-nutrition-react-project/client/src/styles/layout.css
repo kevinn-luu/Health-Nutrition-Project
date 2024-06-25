@@ -57,3 +57,19 @@
 #nav-button-container:hover > #home-button {
     transform: translate(0%, -150%);
 }
+
+.nav-button .home-icon {
+    width: 1em;
+    height: 1em;
+  }
+  
+  .nav-button .home-icon path,
+  .nav-button .home-icon polygon,
+  .nav-button .home-icon {
+    fill: #4691f6;
+  }
+  
+  .nav-button .home-icon circle {
+    stroke: #4691f6;
+    stroke-width: 1;
+  }
