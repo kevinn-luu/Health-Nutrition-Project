@@ -2,10 +2,10 @@ import express, { Router } from "express"
 import {PORT, mongoDBURL} from "./config.js"
 import cors from "cors";
 import mongoose from 'mongoose'
-import {macroStats} from "./models/macroModel.js";
 import router from "./routes/personalMacroRoutes.js";
 import calorieRouter from "./routes/personalCalorieRoutes.js";
 import calorieGoalRouter from "./routes/personalCalorieGoalRoutes.js";
+import communityMessagesRouter from "./routes/communityMessagesRoutes.js";
 
 const app = express(); 
 
@@ -15,6 +15,7 @@ app.use(express.json());
 app.use("/personal/macro", router); 
 app.use("/personal/calorie", calorieRouter);
 app.use("/personal/calorie-goals", calorieGoalRouter);
+app.use("/community", communityMessagesRouter);
 
 mongoose
   .connect(mongoDBURL)
