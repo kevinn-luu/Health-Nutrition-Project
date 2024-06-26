@@ -20,6 +20,7 @@ const CommunityMessages = (props) => {
             <p>User: {message.username}</p>
             <p>Message: {message.entry}</p>
             <p>Date: {message.updatedAt.substr(0, 10)}</p>
+            <p>Time: {message.updatedAt.substr(12,16)}</p>
           </div>
         ))
       ) : (
