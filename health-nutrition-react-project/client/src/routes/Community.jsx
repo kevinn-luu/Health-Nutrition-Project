@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import '../styles/messages.css'
 import CommunityMessages from '../components/community/CommunityMessages.jsx'
 import {Link} from 'react-router-dom'
+import CommunityForm from '../components/community/CommunityForm.jsx'
 
 const Community = () => {
 
@@ -28,6 +29,7 @@ const Community = () => {
             <button><Link to="/">Back Home</Link></button>
           </nav>
           <section>
+            <CommunityForm />
             <CommunityMessages messages={messages} />
  
           </section>
