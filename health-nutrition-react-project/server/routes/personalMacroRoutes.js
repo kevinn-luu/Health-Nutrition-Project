@@ -71,6 +71,9 @@ router.get("/:id", async (req, res) => {
   try {
     const {id} = req.params; 
     const macro = await macroStats.findById(id); 
+    if(!macro) {
+      return res.status(404).json({message: "Cannot find id"});
+    }
     return res.status(200).json({macro});
   } catch (err) {
     console.log(err.message); 
