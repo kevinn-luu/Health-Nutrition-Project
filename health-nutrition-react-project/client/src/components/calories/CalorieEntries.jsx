@@ -7,17 +7,51 @@ const CalorieEntries = () => {
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(false);
   const [todayCalories, setTodayCalories] = useState(0);
+  const [editingEntryId, setEditingEntryId] = useState(null);
+  const [editFormData, setEditFormData] = useState({
+    date: '',
+    totalcalories: '',
+    meals: []
+  });
 
   const handleClick = (id) => {
-    console.log(`Deleting entry ${id}`);
     axios
       .delete(`http://localhost:5555/personal/calorie/${id}`)
       .then((res) => {
-        console.log("Entry deleted", res.data);
         window.location.reload();
       })
       .catch((err) => {
         console.log("Error deleting entry: ", JSON.stringify(err, null, 2));
+      });
+  };
+
+  const handleEditClick = (dailyCalorie) => {
+    setEditingEntryId(dailyCalorie._id);
+    setEditFormData({
+      date: new Date(dailyCalorie.date).toISOString().slice(0, 10),
+      totalcalories: dailyCalorie.totalcalories,
+      meals: dailyCalorie.meals
+    });
+  };
+
+  const handleEditChange = (e) => {
+    const { name, value } = e.target;
+    setEditFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleEditSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .put(`http://localhost:5555/personal/calorie/${editingEntryId}`, editFormData)
+      .then((res) => {
+        setEditingEntryId(null);
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log("Error updating entry: ", JSON.stringify(err, null, 2));
       });
   };
 
@@ -30,12 +64,10 @@ const CalorieEntries = () => {
           if (new Date(dailyCalorie.date).toLocaleDateString() === todayDate) {
             return dailyTotal + dailyCalorie.totalcalories;
           }
-
           return dailyTotal;
         }, 0)
       );
     }, 0);
-
     setTodayCalories(todayTotal);
   };
 
@@ -44,7 +76,6 @@ const CalorieEntries = () => {
     axios
       .get("http://localhost:5555/personal/calorie")
       .then((res) => {
-        console.log("Response :", JSON.stringify(res.data.data, null, 2));
         setEntries(res.data.data);
         setLoading(false);
         calculateTodayCalories(res.data.data);
@@ -95,6 +126,41 @@ const CalorieEntries = () => {
                       >
                         Delete entry
                       </button>
+                      <button
+                        onClick={() => handleEditClick(dailyCalorie)}
+                        className="edit-entry-button"
+                      >
+                        Edit entry
+                      </button>
+                      {editingEntryId === dailyCalorie._id && (
+                        <div className="edit-entry-form">
+                          <h2>Edit Entry</h2>
+                          <form onSubmit={handleEditSubmit}>
+                            <label>
+                              Date:
+                              <input
+                                type="date"
+                                name="date"
+                                value={editFormData.date}
+                                onChange={handleEditChange}
+                                required
+                              />
+                            </label>
+                            <label>
+                              Total Calories:
+                              <input
+                                type="number"
+                                name="totalcalories"
+                                value={editFormData.totalcalories}
+                                onChange={handleEditChange}
+                                required
+                              />
+                            </label>
+                            <button type="submit">Save Changes</button>
+                            <button type="button" onClick={() => setEditingEntryId(null)}>Cancel</button>
+                          </form>
+                        </div>
+                      )}
                     </div>
                   ))
               )
