@@ -67,14 +67,25 @@ calorieRouter.put('/:id', async (req, res) => {
     try {
     
         const { id } = req.params;
+        const { userId, date, totalcalories, meals } = req.body;
 
-        const calorieResult = await CalorieCounter.findByIdAndUpdate(id, req.body, { new: true });
+        const calorieCounter = await CalorieCounter.findOneAndUpdate(
+            { "dailyCalories._id": id },
+            {
+                $set: {
+                    "dailyCalories.$.date": date,
+                    "dailyCalories.$.totalcalories": totalcalories,
+                    "dailyCalories.$.meals": meals
+                }
+            },
+            { new: true }
+        );
 
-        if (!calorieResult) {
+        if (!calorieCounter) {
             return res.status(404).json({ message: "Information not found" });
         }
 
-        return res.status(200).json({ message: "Information successfully updated", calorieResult });
+        return res.status(200).json({ message: "Information successfully updated", calorieCounter });
 
     } catch (error) {
         console.log(error.message);
