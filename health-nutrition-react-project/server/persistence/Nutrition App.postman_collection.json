@@ -1,0 +1,374 @@
+{
+	"info": {
+		"_postman_id": "2b7ffaff-26dd-4dd7-9999-bf54c35f1907",
+		"name": "Nutrition App",
+		"description": "Nutrition App Backend Routes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32721963"
+	},
+	"item": [
+		{
+			"name": "Get All Macros",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"First Data Response Has Fats = 1\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data[0].fats).to.eql(1);",
+							"});",
+							"",
+							"pm.test(\"First Data Response Has Cholesterol = 2\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data[0].cholesterol).to.eql(2);",
+							"});",
+							"",
+							"pm.test(\"First Data Response Has Sodium = 1\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data[0].sodium).to.eql(1);",
+							"});",
+							"",
+							"pm.test(\"First Data Response Has Fiber = 1\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data[0].fiber).to.eql(1);",
+							"});",
+							"",
+							"pm.test(\"First Data Response Has Fats = 1\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data[0].sugar).to.eql(1);",
+							"});",
+							"",
+							"pm.test(\"First Data Response Has Correct ID\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data[0]._id).to.eql(\"6672711e94843ac38c6563fa\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5555/personal/macro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"personal",
+						"macro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get by ID wrong ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 500\", function () {",
+							"    pm.response.to.have.status(500);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5555/personal/macro/DEEUEIGH",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"personal",
+						"macro",
+						"DEEUEIGH"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get by ID first in database",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"First Data Response Has Fats = 1\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.macro.fats).to.eql(1);",
+							"});",
+							"",
+							"pm.test(\"First Data Response Has Cholesterol = 2\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.macro.cholesterol).to.eql(2);",
+							"});",
+							"",
+							"pm.test(\"First Data Response Has Sodium = 1\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.macro.sodium).to.eql(1);",
+							"});",
+							"",
+							"pm.test(\"First Data Response Has Fiber = 1\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.macro.fiber).to.eql(1);",
+							"});",
+							"",
+							"pm.test(\"First Data Response Has Fats = 1\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.macro.sugar).to.eql(1);",
+							"});",
+							"",
+							"pm.test(\"First Data Response Has Correct ID\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.macro._id).to.eql(\"6672711e94843ac38c6563fa\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5555/personal/macro/6672711e94843ac38c6563fa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"personal",
+						"macro",
+						"6672711e94843ac38c6563fa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post new entry",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+							"});",
+							"",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.message).to.eql(\"Successfully created new Macro report!\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fats\": 10,\n    \"cholesterol\": 5,\n    \"sodium\": 2,\n    \"fiber\": 1,\n    \"sugar\": 2,\n    \"protein\": 100\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5555/personal/macro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"personal",
+						"macro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post new entry incorrect body",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.message).to.eql(\"Incorrect Data Input\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fats\": 10,\n    \"cholesterol\": 5,\n    \"sodium\": 2,\n    \"fiber\": 1,\n    \"sugar\": 2,\n    \"protein\": -1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5555/personal/macro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"personal",
+						"macro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update with Correct ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.message).to.eql(\"Successfully updated Macro!\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fats\": 10,\n    \"cholesterol\": 5,\n    \"sodium\": 2,\n    \"fiber\": 1,\n    \"sugar\": 2,\n    \"protein\": 100\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5555/personal/macro/6679e4c01f820d964e7f2f48",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"personal",
+						"macro",
+						"6679e4c01f820d964e7f2f48"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update with Invalid ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 500\", function () {",
+							"    pm.response.to.have.status(500);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fats\": 10,\n    \"cholesterol\": 5,\n    \"sodium\": 2,\n    \"fiber\": 1,\n    \"sugar\": 2,\n    \"protein\": 100\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5555/personal/macro/6679e4c01f820d964e7f2f4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"personal",
+						"macro",
+						"6679e4c01f820d964e7f2f4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
