@@ -13,7 +13,7 @@ router.get("/", async (req,res) => {
     })
   } catch (err) {
     console.log(err);
-    return res.status(404).json({message: err.message}); 
+    return res.status(500).json({message: err.message}); 
   }
 })
 
@@ -32,10 +32,10 @@ router.post("/", async(req, res) => {
       protein: protein,
     }
     macroStats.create(newMacro)
-    return res.status(200).json({message: "Successfully created new Macro report!"});
+    return res.status(201).json({message: "Successfully created new Macro report!"});
   } catch (err) {
     console.log(err.message); 
-    return res.status(404).json({message: err.message});
+    return res.status(500).json({message: err.message});
   }
 })
 
@@ -63,7 +63,7 @@ router.put("/:id", async (req, res) => {
 
   } catch (err) {
     console.log(err.message); 
-    return res.status(404).json({message: err.message});
+    return res.status(500).json({message: err.message});
   }
 })
 
