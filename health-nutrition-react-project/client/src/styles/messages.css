@@ -1,3 +1,4 @@
+/* Styling for the central component */
 .messages-container {
   display: flex;
   height: 100vh;
@@ -43,3 +44,61 @@
   font-size: 0.7em;
   margin-bottom: 0.2em;
 }
+
+/* styling for the navbar */
+
+.community-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  padding: 0 3.5*2;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.community-navbar {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.community-navbar__menu {
+  position: relative;
+  display: flex;
+}
+
+.community-navbar__item {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.community-navbar__link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+  justify-content: center;
+  height: 3.5rem;
+  width: 10rem;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, width 0.3s ease;
+}
+
+.community-navbar__link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 12rem;
+}
+
+

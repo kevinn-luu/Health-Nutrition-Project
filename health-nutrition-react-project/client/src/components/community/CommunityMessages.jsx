@@ -15,14 +15,13 @@ const CommunityMessages = (props) => {
   return (
     <div className='messages-container'>
       <div className='message-sidebar'>
-      <h1>Sidebar</h1>
-      <ul className='sidebar-menu'>
-        <li>Profile</li>
-        <li>Likes</li>
-        <li>Saved Posts</li>
-        <li>Logout</li>
-        <li>Settings</li>
-      </ul>
+        <ul className='sidebar-menu'>
+          <li>Profile</li>
+          <li>Likes</li>
+          <li>Saved Posts</li>
+          <li>Logout</li>
+          <li>Settings</li>
+        </ul>
       </div>
       <div className='messages'>
         {reversedArray.length > 0 ? (
@@ -39,6 +38,9 @@ const CommunityMessages = (props) => {
         ) : (
           <p>No macros available</p>
         )}
+      </div>
+      <div className='third-container'>
+        <h1>Third container here</h1>
       </div>
     </div>
   )
