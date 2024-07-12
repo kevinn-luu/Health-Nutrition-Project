@@ -24,14 +24,48 @@ const Community = () => {
 
   return (
     <main>
-          <nav className="macro-nav">
-            <h1>COMMUNITY BOARD</h1>
-            <button><Link to="/">Back Home</Link></button>
-          </nav>
+          <div className='community-header'>
+            <div className='header-logo'>
+              <strong>LOGO</strong>
+            </div>
+            <nav className='community-navbar'>
+              <ul className='community-navbar__menu'>
+
+                <li className='community-navbar__item'>
+                  <a href='#' className='community-navbar__link'>
+                    <span>Home</span>
+                  </a>
+                </li>
+
+                <li className='community-navbar__item'>
+                  <a href='#' className='community-navbar__link'>
+                    <span>Friends</span>
+                  </a>
+                </li>
+
+                <li className='community-navbar__item'>
+                  <a href='#' className='community-navbar__link'>
+                    <span>Notifications</span>
+                  </a>
+                </li>
+
+                <li className='community-navbar__item'>
+                  <a href='#' className='community-navbar__link'>
+                    <span>Settings</span>
+                  </a>
+                </li>
+
+                <li className='community-navbar__item'>
+                  <a href='#' className='community-navbar__link'>
+                    <span>GOD DID</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
           <section>
             <CommunityForm />
             <CommunityMessages messages={messages} />
- 
           </section>
         </main>
   )
